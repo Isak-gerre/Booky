@@ -23,22 +23,22 @@ export const getUser = async (req, res) => {
   if ("id" in req.query) {
     console.log("id");
     const foundUser = await client
-      .db("Users_Crypto")
-      .collection("users")
+      .db("Booky")
+      .collection("booky_users")
       .find(req.query, { sort: { name: 1 } });
     res.send(foundUser);
   }
   if ("name" in req.query) {
     console.log("name");
     const foundUser = await client
-      .db("Users_Crypto")
-      .collection("users")
+      .db("Booky")
+      .collection("booky_users")
       .find(req.query, { sort: { name: 1 } });
     res.send(foundUser);
   }
   if (Object.keys(req.query).length === 0) {
     console.log("empty");
-    const allUsers = await client.db("Users_Crypto").collection("users").findOne({ id: "3" });
+    const allUsers = await client.db("Booky").collection("booky_users").findOne({ id: "3" });
     console.log(allUsers);
     res.send(allUsers);
   }
@@ -48,13 +48,13 @@ export const getUser = async (req, res) => {
 export const createUser = async (req, res) => {
   const client = await main();
   console.log(req.body);
-  await client.db("Users_Crypto").collection("users").insertOne(req.body);
+  await client.db("Booky").collection("booky_users").insertOne(req.body);
   res.send(req.body);
   await client.close();
 };
 export const updateUser = async (req, res) => {
   const client = await main();
   console.log("working");
-  res.send("users: get");
+  res.send("booky_users: get");
   await client.close();
 };
