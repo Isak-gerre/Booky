@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 
 import usersRoutes from "./routes/users.js";
+import businessRoutes from "./routes/business.js";
 
 
 const app = express();
@@ -27,3 +28,4 @@ app.use(cors());
 const PORT = process.env.PORT || 8000;
 app.listen(PORT);
 app.use("/users", usersRoutes);
+app.use("/business", businessRoutes);
